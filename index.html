@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いぬみくじ（仮）</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- 共通ステータスヘッダー -->
+        <div class="status-section">
+            <div class="status-header">
+                <div>現在の相棒: <span id="display-species">犬</span></div>
+                <div><span class="level-badge">Lv.<span id="display-level">1</span></span></div>
+            </div>
+            <div class="next-level-info">
+                次のレベルまで: <span id="display-next-pts">10</span> P
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="level-progress"></div>
+            </div>
+        </div>
+
+        <!-- キャラクター常時表示エリア -->
+        <div class="character-box">
+            <div class="effect-aura" id="aura"></div>
+            <div class="char-avatar" id="avatar">🐶</div>
+            <div class="char-name" id="name-tag">ブルドッグ</div>
+        </div>
+
+        <!-- 画面1: やる気入力＆おみくじ開始 -->
+        <div id="screen-input" class="screen active">
+            <h1>いぬみくじ</h1>
+            <p class="subtitle">毎朝のルーティン。今日のやる気は？</p>
+            
+            <div class="mood-selector">
+                <button class="mood-btn" data-mood="1">
+                    <span class="icon">😭</span>
+                    <span class="label">1: どん底</span>
+                </button>
+                <button class="mood-btn" data-mood="2">
+                    <span class="icon">🥱</span>
+                    <span class="label">2: 低め</span>
+                </button>
+                <button class="mood-btn" data-mood="3">
+                    <span class="icon">🙂</span>
+                    <span class="label">3: ふつう</span>
+                </button>
+                <button class="mood-btn" data-mood="4">
+                    <span class="icon">🔥</span>
+                    <span class="label">4: 高め</span>
+                </button>
+                <button class="mood-btn" data-mood="5">
+                    <span class="icon">⚡</span>
+                    <span class="label">5: マックス</span>
+                </button>
+            </div>
+
+            <button id="start-btn" class="btn" disabled>おみくじを引く</button>
+            
+            <!-- エンドコンテンツ用動物チェンジャー -->
+            <div class="animal-changer" id="end-content-box">
+                <p class="end-content-title">🎉 特別ご褒美：動物の種類を変更できます</p>
+                <select id="animal-select">
+                    <option value="dog">犬ルート (成長順)</option>
+                    <option value="cat">猫 (親密なままチェンジ) 🐱</option>
+                    <option value="hamster">ハムスター (親密なままチェンジ) 🐹</option>
+                    <option value="penguin">ペンギン (親密なままチェンジ) 🐧</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 画面2: シャッフル演出 -->
+        <div id="screen-draw" class="screen">
+            <div class="loader-box">
+                <div class="omikuji-box-img">⛩️</div>
+                <p class="loading-text">おみくじを振っています...</p>
+            </div>
+        </div>
+
+        <!-- 画面3: 結果表示 -->
+        <div id="screen-result" class="screen">
+            <div class="result-badge" id="result-luck">大吉</div>
+            <div class="points-earned" id="result-points">+10 ポイント獲得！</div>
+            
+            <div class="message-balloon" id="result-message">
+                セリフが入ります。
+            </div>
+
+            <button id="close-btn" class="btn">今日も一日がんばる</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
